@@ -1,13 +1,13 @@
-let question_arr = ['Коли почалася війна на Україні? 2022 рік,'Хто вкрав російський танк?','Під час війни, куди найбільше людей поїхали?','Як звати президента України?','Як правильно називається привид, який збив російські ракети?'];
-let a1_arr = ["1 березня","Цигани","Львів","Олександр","Привид Харкова"]
-let a2_arr = ["15 лютого","Бабки","Дніпро","Володимир","Привид Дніпра"]
-let a3_arr = ["16 січня","Гопніки","Польща","Борис","Привид Києва"]
-let a4_arr = ["24 лютого","Прості люди","Донецьк","Віталій","Немає праильної відповіді"]
+let question_arr = ["Коли почалася війна на Україні?2022 рік","Хто вкрав російський танк?","під час війни куди найбільше людей поїхали?","Як звати президента України?","Як правильно називається привид,який збив російські ракети?"]
+let a1_arr = ["1 березня","Бабки","Львів","Олександр","Привид Харкова"]
+let a2_arr = ["24 лютого","Гопніки","Дніпро","Борис","Привид Дніпра"]
+let a3_arr = ["16 січня","Цигани","Китай","Володимир","Привид Києва"]
+let a4_arr = ["15 лютого","Прості люди","Польща","Віталій","Немає правильної відповіді"]
 let answer_arr = ["24 лютого","Цигани","Польща","Володимир","Привид Києва"]
-let n_right_answer_arr = [4,1,3,2,3]
+let n_right_answer_arr = [2,3,4,3,3]
+// let n_right_answer = 1;
 let right_answers = 0;
 let n_answer = 4;
-let pointFlag=1;
 
 question.innerHTML=question_arr[n_question.value];
 a1.innerHTML = a1_arr[n_question.value];
@@ -34,12 +34,8 @@ btn2.addEventListener("click", f_out2);
         console.log(n_a);
         
         if (n_a == n_right_answer){
-        if(pointFlag==1){
         right_answers += 1;
-        pointFlag=0;
-        }
         right_div.classList.remove("hidden");
-        right.classList.remove("hidden");
         wrong_div.classList.add("hidden");
         console.log("n_question.value = "+n_question.value);
         console.log("n_answer = "+n_answer);
@@ -51,15 +47,10 @@ btn2.addEventListener("click", f_out2);
         }
         }
         else{
-          if(pointFlag==1){
-            //right_answers -= 1;
-            pointFlag=0;
-            }
-        right_div.classList.remove("hidden");
-        right.classList.add("hidden");
+        right_answers-=1;
+        right_div.classList.add("hidden");
         wrong_div.classList.remove("hidden");
         }
-        console.log ("right_answers=" +right_answers);
   }
   function f_out1 (){
     answer.classList.toggle("hidden");
@@ -67,8 +58,6 @@ btn2.addEventListener("click", f_out2);
   }
   function f_out2 (){
     right_div.classList.add("hidden");
-    wrong_div.classList.add("hidden");
-    pointFlag=1;
     k = Number(n_question.value);
     k+=1;
     n_question.value = k;
